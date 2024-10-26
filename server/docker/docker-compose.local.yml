@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  server:
+    container_name: on-server
+    restart: always
+    tty: true
+
+  database:
+    container_name: on-database
+    restart: always
+    tty: true
