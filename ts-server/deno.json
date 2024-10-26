@@ -1,0 +1,10 @@
+{
+    "tasks": {
+        "dev": "deno run -A --unstable-kv --watch ./main.ts",
+        "start": "deno run -A --watch ./main.ts",
+        "deploy": "deployctl deploy --project=sumo-talk-server --entrypoint=main.ts --org=miso"
+    },
+    "fmt": {
+        "lineWidth": 140
+    }
+}
