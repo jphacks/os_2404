@@ -1,6 +1,6 @@
 import { SECRET } from "./constants/secret.ts";
 import { type Context, getCookie, MiddlewareHandler, Next } from "./deps.ts";
-import { checkToken, decrypt, parseTokenData } from "./service/Auth/index.ts";
+import { checkToken, decrypt, parseTokenData } from "./service/auth/index.ts";
 import { throwAPIError } from "./util/throwError.ts";
 import { cors, logger, poweredBy } from "./deps.ts";
 

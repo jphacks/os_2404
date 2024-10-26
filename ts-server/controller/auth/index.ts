@@ -19,7 +19,6 @@ export const app = new Hono();
  * Discordの認可画面にリダイレクトするようにする
  */
 app.get("/signin", (c: Context) => {
-    console.log("signin!!!", SECRET.AUTH_ENDPOINT);
     return c.json({ redirectUrl: SECRET.AUTH_ENDPOINT });
 });
 
@@ -30,7 +29,6 @@ app.get("/signin", (c: Context) => {
  * トークンは、access_token, refresh_token, expires_in, token_type, scopeの5つの情報を持つ
  */
 app.get("/token", async (c: Context) => {
-    console.log("token!!!", c.req.query("code"));
     const code = c.req.query("code");
     if (!code) return throwAPIError(401, "code is not found")();
 

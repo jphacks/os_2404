@@ -1,10 +1,18 @@
 {
-    "tasks": {
-        "dev": "deno run -A --unstable-kv --watch ./main.ts",
-        "start": "deno run -A --watch ./main.ts",
-        "deploy": "deployctl deploy --project=sumo-talk-server --entrypoint=main.ts --org=miso"
-    },
-    "fmt": {
-        "lineWidth": 140
-    }
+  "tasks": {
+    "dev": "deno run -A --unstable-kv --watch ./main.ts",
+    "start": "deno run -A --watch ./main.ts",
+    "deploy": "deployctl deploy --project=sumo-talk-server --entrypoint=main.ts --org=miso"
+  },
+  "fmt": {
+    "lineWidth": 140
+  },
+  "deploy": {
+    "project": "49775cf7-51e1-4adf-bf6c-690bb05e74a2",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  }
 }

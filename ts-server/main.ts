@@ -1,6 +1,6 @@
 import { type Context, Hono } from "./deps.ts";
-import Auth from "./controller/auth/index.ts";
 import { middlewareOptions } from "./middleware.ts";
+import Auth from "./controller/auth/index.ts";
 
 export const app = new Hono();
 
