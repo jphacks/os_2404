@@ -2,6 +2,7 @@
     "folders": [
       { "path": "./client" },
       { "path": "./server" },
+      { "path": "./ts-server" },
       { "path": "./bot/discord" },
       { "path": "." }
     ]
