@@ -15,7 +15,7 @@ const bot = createBot({
   intents: Intents.Guilds | Intents.GuildMessages | Intents.MessageContent,
   events: {
     ready: (_bot, payload) => {
-      console.log(`${payload.user.username} is ready!`);
+        console.log(`${payload.user.username} is ready!`);
     },
   },
 });
