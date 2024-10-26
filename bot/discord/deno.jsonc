@@ -1,9 +1,19 @@
 {
   "tasks": {
     "dev": "deno run -A --unstable --watch ./main.ts",
-    "start": "deno run -A --unstable --watch ./main.ts"
+    "start": "deno run -A --unstable --watch ./main.ts",
+    "deploy": "deployctl deploy --project=loni --entrypoint=main.ts --org=miso"
   },
   "fmt": {
     "lineWidth": 120
-  }
+  },
+  "deploy": {
+    "project": "1bb9fcf0-febe-4c6d-8e8d-77a68d1319f5",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  },
+  "unstable": ["cron"]
 }
