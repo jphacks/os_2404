@@ -1,5 +1,4 @@
-## Build
-FROM golang:1.23-buster AS build
+FROM golang:1.23rc2 as builder
 
 WORKDIR /go/src/github.com/jphacks/os_2404
 
