@@ -15,7 +15,6 @@ const app = new Hono();
  */
 app.post("/", async (c: Context) => {
     const scheduleData: Schedule[] = await c.req.json();
-    console.log("create", scheduleData);
     if (!scheduleData) return throwAPIError(400, "Schedule data is required")();
     // scheduleData.forEach((schedule) => {
     kv.set(["schedule"], scheduleData);

@@ -31,12 +31,22 @@ bot.events.messageCreate = async (bot, message) => {
 // 月曜日の21時に流す
 // UTCとの時差が9時間あるので、これで21時にcronが動く
 Deno.cron("watch start time cron", "*/30 * * * *", async () => {
-  // start時間を取得してくる
+  // 開始時間を取得してくる
+  const schedulesData = await fetch(`${Secret.SERVER_URL}/schedule`, { method: "GET", cache: "no-store" });
+  const schedules: { dayOfWeek: number; start: string; isEnabled: boolean }[] = await schedulesData.json();
 
-  bot.helpers.sendMessage(Secret.MY_CHANNEL_ID, { content: MESSAGE_TEXT });
-  const allUserIds = await bot.helpers.getMembers(Secret.GUILD_ID, { limit: 10 });
-  const resultMessage = createResultMessage(allUserIds.map((user) => user.id));
-  bot.helpers.sendMessage(Secret.MY_CHANNEL_ID, { content: resultMessage });
+  schedules.forEach((schedule) => {
+    if (schedule.isEnabled) {
+      const [hours, minutes] = schedule.start.split(":");
+      const cronExpression = `${minutes} ${hours} * * ${schedule.dayOfWeek}`;
+      Deno.cron(`${schedule.dayOfWeek} `, cronExpression, async () => {
+        bot.helpers.sendMessage(Secret.MY_CHANNEL_ID, { content: MESSAGE_TEXT });
+        const allUserIds = await bot.helpers.getMembers(Secret.GUILD_ID, { limit: 10 });
+        const resultMessage = createResultMessage(allUserIds.map((user) => user.id));
+        bot.helpers.sendMessage(Secret.MY_CHANNEL_ID, { content: resultMessage });
+      });
+    }
+  });
 });
 
 await startBot(bot);
