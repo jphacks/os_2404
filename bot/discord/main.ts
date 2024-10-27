@@ -38,8 +38,10 @@ Deno.cron("watch start time cron", "*/30 * * * *", async () => {
   schedules.forEach((schedule) => {
     if (schedule.isEnabled) {
       const [hours, minutes] = schedule.start.split(":");
-      const cronExpression = `${minutes} ${hours} * * ${schedule.dayOfWeek}`;
-      Deno.cron(`${schedule.dayOfWeek} `, cronExpression, async () => {
+
+      const calculatedHours = (Number(hours) - 9 + 24) % 24;
+      const cronExpression = `${minutes} ${calculatedHours} * * ${schedule.dayOfWeek}`;
+      Deno.cron(cronExpression, async () => {
         bot.helpers.sendMessage(Secret.MY_CHANNEL_ID, { content: MESSAGE_TEXT });
         const allUserIds = await bot.helpers.getMembers(Secret.GUILD_ID, { limit: 10 });
         const resultMessage = createResultMessage(allUserIds.map((user) => user.id));
