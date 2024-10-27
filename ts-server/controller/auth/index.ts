@@ -50,7 +50,7 @@ app.get("/token", async (c: Context) => {
         httpOnly: true,
         secure: true,
         // redirectされた時にcookieが送られるようにするためにLaxにしている
-        sameSite: "Lax",
+        sameSite: "None",
         maxAge: accessToken.expires_in,
     });
 
