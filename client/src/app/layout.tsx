@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import "./global.css";
-export const metadata = { title: "sumo-talk" };
+export const metadata = { title: "すもトーク" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
